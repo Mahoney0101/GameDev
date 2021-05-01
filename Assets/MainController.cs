@@ -59,6 +59,15 @@ public class MainController : MonoBehaviour
             score = PlayerPrefs.GetInt("Score",0);
             score = score+1;
             PlayerPrefs.SetInt("Score", score);
+            if(score == 1){
+                playGamesScript.FirstBlock();
+            }
+            if(score == 150){
+                playGamesScript.SmashFiftyBlock();
+            }
+            if(score == 100){
+                playGamesScript.SmashHundredBlock();
+            }
         }
         DeathPlane die = collision.gameObject.GetComponent<DeathPlane>();
         if(die != null){

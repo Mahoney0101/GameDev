@@ -6,11 +6,11 @@ using System;
 
 public class PlayGamesScript : MonoBehaviour
 {
-    string LeaderboardId = "CgkIvO-0284NEAIQAQ";
+    string LeaderboardId = "CggI3Yua5wIQAhAC";
 	long scorecall = 0;
     void Start()
     {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();       
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();       
 		PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
@@ -22,7 +22,7 @@ public class PlayGamesScript : MonoBehaviour
     {
         if (PlayGamesPlatform.Instance.localUser.authenticated)
 		{
-            Social.ReportScore(score, "CgkIvO-0284NEAIQAQ", (bool success) => {
+            Social.ReportScore(score, "CggI3Yua5wIQAhAC", (bool success) => {
                 Debug.Log("Report Success");
             });
         }
@@ -30,11 +30,11 @@ public class PlayGamesScript : MonoBehaviour
 			scorecall = score;
 			PlayGamesPlatform.Instance.Authenticate(reportCallback,false);
 		}
-    }
-
+	}
+ 
 	public void reportCallback(Boolean success){
 		if(success){
-			Social.ReportScore(scorecall, "CgkIvO-0284NEAIQAQ", (bool success) => {
+			Social.ReportScore(scorecall, "CggI3Yua5wIQAhAC", (bool success) => {
                 Debug.Log("Report Success");
             });
 		}
@@ -54,7 +54,13 @@ public class PlayGamesScript : MonoBehaviour
 
 	public void ShowLeaderBoardCall(Boolean success){
 		if(success){
-			PlayGamesPlatform.Instance.ShowLeaderboardUI();
+    		Social.ShowLeaderboardUI();
+		}
+	}
+
+		public void ShowAchievementCall(Boolean success){
+		if(success){
+				Social.ShowAchievementsUI();
 		}
 	}
 
@@ -73,6 +79,41 @@ public class PlayGamesScript : MonoBehaviour
 			Debug.Log("Sign in error");
 		}
     }
+	public void FirstBlock(){
+		Social.ReportProgress("CggI3Yua5wIQAhAI", 100.0f, (bool success) => {
+			if(success){
+				Debug.Log("sucess");
+			}
+		});
+	}
+
+		public void SmashHundredBlock(){
+		Social.ReportProgress("CggI3Yua5wIQAhAJ", 100.0f, (bool success) => {
+			if(success){
+				Debug.Log("sucess");
+			}		
+		});
+	}
+
+		public void SmashFiftyBlock(){
+		Social.ReportProgress("CggI3Yua5wIQAhAK", 100.0f, (bool success) => {
+			if(success){
+				Debug.Log("sucess");
+			}		
+		});
+	}
+
+	
+	public void ShowAcheivments(){
+		if (PlayGamesPlatform.Instance.localUser.authenticated)
+		{
+				Social.ShowAchievementsUI();
+		}
+		else
+		{
+			PlayGamesPlatform.Instance.Authenticate(ShowAchievementCall,false);
+		}
+	}
 
 }
 
