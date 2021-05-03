@@ -27,6 +27,7 @@ public static class GPGSIds
         public const string achievement_firstblock = "CggI3Yua5wIQAhAI"; // <GPGSID>
         public const string achievement_score100 = "CggI3Yua5wIQAhAJ"; // <GPGSID>
         public const string leaderboard_theleaders = "CggI3Yua5wIQAhAC"; // <GPGSID>
+        public const string achievement_smesh = "CggI3Yua5wIQAhAL"; // <GPGSID>
         public const string achievement_first50 = "CggI3Yua5wIQAhAK"; // <GPGSID>
 
 }

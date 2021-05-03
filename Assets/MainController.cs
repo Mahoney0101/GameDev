@@ -62,11 +62,14 @@ public class MainController : MonoBehaviour
             if(score == 1){
                 playGamesScript.FirstBlock();
             }
-            if(score == 150){
+            if(score > 49){
                 playGamesScript.SmashFiftyBlock();
             }
-            if(score == 100){
+            if(score > 99){
                 playGamesScript.SmashHundredBlock();
+            }
+            if(score > 20000){
+                playGamesScript.Smesh();
             }
         }
         DeathPlane die = collision.gameObject.GetComponent<DeathPlane>();

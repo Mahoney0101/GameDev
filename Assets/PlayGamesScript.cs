@@ -103,6 +103,14 @@ public class PlayGamesScript : MonoBehaviour
 		});
 	}
 
+		public void Smesh(){
+		Social.ReportProgress("CggI3Yua5wIQAhAL", 100.0f, (bool success) => {
+			if(success){
+				Debug.Log("sucess");
+			}		
+		});
+	}
+
 	
 	public void ShowAcheivments(){
 		if (PlayGamesPlatform.Instance.localUser.authenticated)
